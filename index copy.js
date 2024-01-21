@@ -55,3 +55,13 @@ for(data in ourdata)
 {
     console.log(data);
 }
+
+// Function to display reviews
+// function beerReviews(reviews) {
+//     const reviewList = document.querySelector(".reviewList");
+//     reviews.forEach((review) => {
+//       const list = document.createElement("li");
+//       list.textContent = review;
+//       reviewList.appendChild(list);
+//     });
+//   }
