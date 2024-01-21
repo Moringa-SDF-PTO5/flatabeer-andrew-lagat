@@ -1,0 +1,25 @@
+{
+  "name": "flatabeer-andrew-lagat",
+  "version": "1.0.0",
+  "description": "flatabeer project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maruands/flatabeer-andrew-lagat.git"
+  },
+  "keywords": [
+    "flatbeer"
+  ],
+  "author": "Andrew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maruands/flatabeer-andrew-lagat/issues"
+  },
+  "homepage": "https://github.com/maruands/flatabeer-andrew-lagat#readme",
+  "dependencies": {
+    "json-server": "^1.0.0-alpha.21"
+  }
+}
