@@ -49,7 +49,7 @@
     background-color: #f2f2f2;
     background-image: linear-gradient(to bottom right, rgb(252, 255, 252), white);
     padding: 20px;
-    width: 800px;
+    width: 1000px;
     margin: 50px auto;
     padding-top: 50px;
   }
@@ -58,6 +58,7 @@
     float: left;
     width: 25%;
     margin-top: 6px;
+    border-right: 1px solid black;
   }
   
   .col-75 {
@@ -86,20 +87,23 @@
   }
 
   ul.card {
-    height: 300px;
-    border: 1px solid black;
+    height: 55px;
     border-radius: 10px;
     padding: 10px;
-    background-color: beige;
   }
   .beer {
-    text-align: center;
+    float: left;
     width: 100%;
     display: block;
     
   }
   .beer_img {
     height: 200px;
+  }
+
+  li .review {
+    width: 100%;
+    display: flex;
   }
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */

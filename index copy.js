@@ -18,18 +18,33 @@ fetch('db.json')
         card.innerHTML = `
             
             <div class="beer">
-                
+                <h3>${beers[i].name}</h3>
                 <div class = "col-25">
-                    <h3>${beers[i].name}</h3>
+                    <img src="${beers[i].image_url}" alt="" class="beer_img" srcset="">
                 </div>
                 <div class = "col-75">
-                   
+                    <p>${beers[i].description}</p>
+                    <ul id="reviews">
+                    </ul>
                 </div>
             </div>          
         
         `;
         document.querySelector('#beers').appendChild(card);
-        
+        console.log(" ");
+        console.log(beers[i].name);
+        var reviews = ourdata['beers'][i].reviews
+        let review = document.createElement('li');
+        //console.log(reviews);
+        for(let j = 0; j <reviews.length; j++){
+            review.innerHTML = `
+            <ul>
+               <li class="review"> ${reviews[j]} </li>
+            </ul>
+               `
+            document.querySelector('#reviews').appendChild(review);
+            console.log(reviews[j]);
+        }
     }
         
     //console.log(data);
