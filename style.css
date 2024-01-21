@@ -18,7 +18,8 @@
   }
 
   input[type=text], select, textarea {
-    width: 100%;
+    width: 70%;
+    height: 70px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -31,13 +32,14 @@
   }
   
   input[type=submit] {
-    background-color: #04AA6D;
+    background-color: #f09206;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right;
+    float: left;
+    margin-top: 10px;
   }
   
   input[type=submit]:hover {
@@ -52,6 +54,7 @@
     width: 1000px;
     margin: 50px auto;
     padding-top: 50px;
+    height: 795px;
   }
   
   .col-25 {
@@ -99,11 +102,11 @@
   }
   .beer_img {
     height: 200px;
+    margin: 5px 5px 5px 30px;
   }
 
   li .review {
-    width: 100%;
-    display: flex;
+    
   }
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
