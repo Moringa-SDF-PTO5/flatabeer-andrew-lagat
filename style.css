@@ -6,7 +6,7 @@
     background-image: linear-gradient(to bottom right, rgb(213, 214, 190), white);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 600px;
+    height: 1000px;
   }
   
   li {
@@ -38,7 +38,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: left;
+    /* float: left; */
     margin-top: 10px;
   }
   
@@ -54,7 +54,7 @@
     width: 1000px;
     margin: 50px auto;
     padding-top: 50px;
-    height: 795px;
+    height: 1000px;
   }
   
   .col-25 {
@@ -112,7 +112,31 @@
   li img {
     text-align: center;
   }
+
+  h1 {
+    font-family: "Great Vibes", cursive;
+    color: blue;
+    font-size: 40px;
+  }
+
+  h2 {
+    text-decoration: underline;
+  }
+  p {
+    font-size: 20px;
+    margin: 5px;
+  }
+  #reviews ul li {
+    background-color: #f09206;
+    color: black;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+  }
   
+  #myform {
+    text-align: center;
+  }
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
     .col-25, .col-75, input[type=submit] {

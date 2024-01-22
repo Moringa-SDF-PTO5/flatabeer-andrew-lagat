@@ -6,11 +6,8 @@ fetch(json_link)
     return res.json();
 })
 .then(data => {
-    console.log(data);
     ourdata = data;
     var beers = data;
-    //console.log(beers);
-    //console.log(ourdata['beers'][0].reviews[2]);
 
     for(let i = 0; i < beers.length; i++)
     {
@@ -23,7 +20,6 @@ fetch(json_link)
             </div>  
         `;
         document.querySelector('#beers').appendChild(card);
-        
         //function that calls each beer
         
     }
@@ -34,39 +30,46 @@ fetch(json_link)
 function beer(id)
 {
     document.querySelector('#beer').innerHTML = '';
-    //console.log(x)
-    console.log(ourdata[id-1].reviews[0]);
     var img = document.createElement('li');
     
     img.innerHTML = `
         <h2>${ourdata[id-1].name}</h2>
         <img src="${ourdata[id-1].image_url}" alt="" class="beer_img" srcset="">
+        <h2>Description</h2>
         <p>${ourdata[id-1].description}</p>
-        <h3>Reviews</h3>
+        <h2>Reviews</h2>
         <ul id='reviews'>
 
         </ul>
        `
     //console.log(img);
     document.querySelector('#beer').appendChild(img);
-    
-    var review_list = document.createElement('li');
-    
+    console.log(ourdata[id-1].reviews);
+    let myreviews = ourdata[id-1].reviews;
     for(let k = 0; k < ourdata[id-1].reviews.length; k++)
     {
+        var review_list = document.createElement('ul');
         review_list.innerHTML = `
-            <li>${ourdata[id-1].reviews[k]}</li>
+        <a onClick="deletReview('${myreviews.indexOf(ourdata[id-1].reviews[k])}')" id="${myreviews.indexOf(ourdata[id-1].reviews[k])}"><li>${ourdata[id-1].reviews[k]}</li></a>
         `
+        myreviews = ourdata[id-1].reviews;
+        console.log();
+        document.querySelector('#reviews').appendChild(review_list);
     }
-
-    document.querySelector('#reviews').appendChild(review_list);
+     //console.log('reviews are')
+    //console.log(myreviews);
+    
 }
 
-
-fetch(json_link, {
-    method: 'post',
-    headers: {
-        'Content-Type':'application/json'
-    },
-    body:JSON.stringify('kd')
-})
+function deletReview(r) {
+    console.log(r);
+    var reviewId = document.getElementById(r);
+    reviewId.remove();
+}
+// fetch(json_link, {
+//     method: 'post',
+//     headers: {
+//         'Content-Type':'application/json'
+//     },
+//     body:JSON.stringify('kd')
+// })
