@@ -6,5 +6,5 @@
 
 ## Get request
 #### Using fetch method, pass the url "http://localhost:3000/beers" as a parameter 
-#### Later the data fetched was appended to the child element of the dom
-#### 
+ Later the data fetched was appended to the child element of the dom
+ 
