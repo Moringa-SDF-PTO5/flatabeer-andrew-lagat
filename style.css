@@ -6,9 +6,20 @@
     background-image: linear-gradient(to bottom right, rgb(213, 214, 190), white);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 1000px;
+    height: 100%;
   }
   
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    background-image: linear-gradient(to bottom right, rgb(252, 255, 252), white);
+    padding: 20px;
+    width: 90%;
+    margin: 50px auto;
+    padding-top: 50px;
+    height: 1500px;
+  }
+
   li {
     list-style: none;
   }
@@ -19,11 +30,12 @@
 
   input[type=text], select, textarea {
     width: 70%;
-    height: 70px;
+    height: 120px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    font-size: 20px;
   }
   
   label {
@@ -46,22 +58,14 @@
     background-color: #5e8860;
   }
   
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    background-image: linear-gradient(to bottom right, rgb(252, 255, 252), white);
-    padding: 20px;
-    width: 1000px;
-    margin: 50px auto;
-    padding-top: 50px;
-    height: 1000px;
-  }
   
   .col-25 {
     float: left;
     width: 25%;
     margin-top: 6px;
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
   }
   
   .col-75 {
@@ -77,25 +81,28 @@
     clear: both;
   }
 
-  #element {
-    color: white;
-    position: absolute;
-    top: 30%;
-    left: 65%;
-    background-color: black;
-    border: 1px slid white;
-    border-radius: 3px;
-    padding: 2px;
-    display: none;
+  .navItem {
+    margin-left: 10px;
   }
 
+  .navItem h3 {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .description {
+    width: 71%;
+    margin: auto;
+  }
+
+  
   ul.card {
     height: 55px;
     border-radius: 10px;
     padding: 10px;
   }
   .beer {
-    float: left;
+    /* float: left; */
     width: 100%;
     display: block;
     
@@ -105,7 +112,7 @@
     margin: 5px 5px 5px 30px;
   }
 
-  li {
+  .beer {
     text-align: center;
   }
 
@@ -119,25 +126,41 @@
     font-size: 40px;
   }
 
-  h2 {
+  h2, h3{
     text-decoration: underline;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 25px;
   }
   p {
     font-size: 20px;
     margin: 5px;
   }
-  #reviews ul li {
+  .reviews {
+    /* border: 1px solid yellow; */
+    width: 71%;
+    margin: auto;
+  }
+  .reviews ul{
+    margin: 0px;
+  }
+  .reviews li {
     background-color: #f09206;
     color: black;
-    margin: 5px;
+    margin: 7px;
     border-radius: 5px;
     font-size: 20px;
+    text-align: left;
+    padding: 7px;
   }
   
   #myform {
     text-align: center;
   }
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  
   @media screen and (max-width: 600px) {
     .col-25, .col-75, input[type=submit] {
       width: 100%;

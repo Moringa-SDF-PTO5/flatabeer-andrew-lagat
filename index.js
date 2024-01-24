@@ -1,63 +1,121 @@
-var ourdata;
-var each_beer;
+let ourdata;
 const json_link = "http://localhost:3000/beers";
 fetch(json_link)
 .then(res => {
     return res.json();
 })
-.then(data => {
-    ourdata = data;
-    var beers = data;
-
-    for(let i = 0; i < beers.length; i++)
+.then(res => {
+    ourdata = res;
+    data = res;
+    //console.log(data)
+    // Loads the innitial data
+    window.addEventListener("load", (event) => {
+        //console.log(res[0].id);
+        beer(res[0].id)
+      });
+    for(let i = 0; i < data.length; i++)
     {
-        let card = document.createElement("ul");
-        card.className = "card";
-        each_beer = beers[i];
-        card.innerHTML = `
-            <div class="beer">
-                <a onClick="beer('${beers[i].id}')"><h3>${beers[i].name}</h3></a>
-            </div>  
-        `;
-        document.querySelector('#beers').appendChild(card);
-        //function that calls each beer
-        
+        renderOneBeer(data[i])
     }
-        
-    //console.log(data);
 })
+
+//function that calls each beer
+function renderOneBeer(beer)
+{
+    //console.log(beer)
+    let card = document.createElement("li");
+    card.className = "navItem";
+    card.innerHTML = `
+        <div>
+            <a onClick="beer('${beer.id}')"><h3>${beer.name}</h3></a>
+        </div>  
+    `;
+    document.querySelector('#beers').appendChild(card);
+    
+}
 
 function beer(id)
 {
+    //console.log(id);
     document.querySelector('#beer').innerHTML = '';
-    var img = document.createElement('li');
+    var img = document.createElement('div');
+    img.className = "beer"
     
     img.innerHTML = `
-        <h2>${ourdata[id-1].name}</h2>
+        <h3>${ourdata[id-1].name}</h3>
         <img src="${ourdata[id-1].image_url}" alt="" class="beer_img" srcset="">
-        <h2>Description</h2>
-        <p>${ourdata[id-1].description}</p>
-        <h2>Reviews</h2>
-        <ul id='reviews'>
+        <div class="description">
+            <h3>Description</h3>
+            <p>${ourdata[id-1].description}</p>
+        </div>
+        <div class="reviews">
+                <h3>Reviews</h3>
+                <div id='reviews'>
 
-        </ul>
+                </div>
+        </div>
        `
-    //console.log(img);
+    
     document.querySelector('#beer').appendChild(img);
-    console.log(ourdata[id-1].reviews);
+    //console.log(ourdata[id-1].reviews);
     let myreviews = ourdata[id-1].reviews;
     for(let k = 0; k < ourdata[id-1].reviews.length; k++)
     {
-        var review_list = document.createElement('ul');
+        var review_list = document.createElement('div');
         review_list.innerHTML = `
-        <a onClick="deletReview('${myreviews.indexOf(ourdata[id-1].reviews[k])}')" id="${myreviews.indexOf(ourdata[id-1].reviews[k])}"><li>${ourdata[id-1].reviews[k]}</li></a>
+            <a onClick="deletReview('${myreviews.indexOf(ourdata[id-1].reviews[k])}')" id="${myreviews.indexOf(ourdata[id-1].reviews[k])}"><li>${ourdata[id-1].reviews[k]}</li></a>
         `
         myreviews = ourdata[id-1].reviews;
-        console.log();
+        //console.log();
         document.querySelector('#reviews').appendChild(review_list);
+        
+        
     }
-     //console.log('reviews are')
-    //console.log(myreviews);
+
+    //beer update section
+    document.querySelector('#beer_input').innerHTML = '';
+    const beerInput = document.createElement('div');
+    beerInput.innerHTML = `
+            <input type="hidden" name="beer_id" value="${ourdata[id-1].id}">
+            <textarea name="review" id=""></textarea>
+            <div class="row">
+                
+                <input type="submit" id="button" value="Update Beer">
+            </div>
+            `
+    document.querySelector('#beer_input').appendChild(beerInput);
+
+    //review input section
+    document.querySelector('#review_input').innerHTML = '';
+    var revInput = document.createElement('div');
+    revInput.innerHTML = "";
+    revInput.innerHTML = `
+            <h3>Leave a review</h3> 
+            <input type="hidden" name="beer_id" value="${ourdata[id-1].id}">
+            <textarea name="review" id=""></textarea>
+        `
+        document.querySelector('#review_input').appendChild(revInput);
+}
+document.querySelector('.myReview').addEventListener('submit', handlesubmit)
+function handlesubmit(e)
+{
+    e.preventDefault();
+    console.log(e.target.beer_id.value);
+    console.log(e.target.review.value);
+    id = [e.target.beer_id.value];
+    console.log(id);
+    fetch("http://localhost:3000/beers/?id=11",{
+        method: "PUT",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify(
+            {
+                "reviews": e.target.review.value
+            })
+    })
+    .then(res => res.json)
+    .then(data => console.log(data.status))
     
 }
 
