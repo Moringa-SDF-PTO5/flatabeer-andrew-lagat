@@ -7,12 +7,10 @@ fetch(json_link)
 .then(res => {
     ourdata = res;
     data = res;
-    //console.log(data)
-    // Loads the innitial data
-    window.addEventListener("load", (event) => {
-        //console.log(res[0].id);
-        beer(res[0].id)
-      });
+
+    //initial item everytime it loads
+    beer(res[0].id)
+    
     for(let i = 0; i < data.length; i++)
     {
         renderOneBeer(data[i])
@@ -22,7 +20,6 @@ fetch(json_link)
 //function that calls each beer
 function renderOneBeer(beer)
 {
-    //console.log(beer)
     let card = document.createElement("li");
     card.className = "navItem";
     card.innerHTML = `
@@ -36,7 +33,6 @@ function renderOneBeer(beer)
 
 function beer(id)
 {
-    //console.log(id);
     document.querySelector('#beer').innerHTML = '';
     var img = document.createElement('div');
     img.className = "beer"
